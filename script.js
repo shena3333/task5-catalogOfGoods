@@ -1,12 +1,12 @@
 //создаем массив с товарами
 let goods = [
-    { id: 1, name: 'шапка', category: 'одежда', price: 500 },
-    { id: 2, name: 'шарф', category: 'одежда', price: 400 },
-    { id: 3, name: 'перчатки', category: 'одежда', price: 300 },
-    { id: 4, name: 'барби', category: 'игрушки', price: 600 },
-    { id: 5, name: 'мяч', category: 'игрушки', price: 200 },
-    { id: 6, name: 'робот', category: 'игрушки', price: 700 },
-    { id: 7, name: 'медведь', category: 'игрушки', price: 100 },
+    // { id: 1, name: 'шапка', category: 'одежда', price: 500 },
+    // { id: 2, name: 'шарф', category: 'одежда', price: 400 },
+    // { id: 3, name: 'перчатки', category: 'одежда', price: 300 },
+    // { id: 4, name: 'барби', category: 'игрушки', price: 600 },
+    // { id: 5, name: 'мяч', category: 'игрушки', price: 200 },
+    // { id: 6, name: 'робот', category: 'игрушки', price: 700 },
+    // { id: 7, name: 'медведь', category: 'игрушки', price: 100 },
 ];
 
 //отображаем форму добавления товара
@@ -24,7 +24,11 @@ function addGoods() {
     for (let i = 0; i < goods.length; i++) {
         arrayId.push(goods[i].id)
     };
-    newId = Math.max(...arrayId) + 1;// так как функция макс не работает напрямую с массивами , поэтому ... ставлю
+    if (arrayId.length == 0) {
+        newId = 1
+    } else {
+        newId = Math.max(...arrayId) + 1;// так как функция макс не работает напрямую с массивами , поэтому ... ставлю
+    }
     // console.log('идент для нового товара', newId);
     newGoods.id = newId;
     // let productName=document.getElementById('productName');
@@ -40,24 +44,49 @@ function addGoods() {
     // console.log(newGoods);
     goods.push(newGoods);
     console.log(goods);
+    catalog.insertAdjacentHTML("afterbegin", '<div class="new-product"></div>');
+    let newProduct = document.querySelector('.new-product')
+    console.log(newProduct);
+    newProduct.textContent = `${productName.value} - ${productCategory.value} - ${productPrice.value}рублей`;
 }
-
-
 // закрытие формы добавления товара
 function closeFormAdd() {
     event.preventDefault();// обнули стандартные свойства формы, чтоб не происходило переотрисовка дом-дерево
     let formAddGoods = document.querySelector('.form-add-goods-new');
     formAddGoods.className = 'form-add-goods';
 }
-
-{/* <div class="info-product">
-<div class="id-product element-info"></div>
-<div class="name-product element-info"></div>
-<div class="prise-product element-info"></div>
-<div class="category-product element-info"></div>
-</div> */}
-
-//достаем div, в который будем класть товары
+// достаем catalog, в котором буду отрисовывать элементы
 let catalog = document.querySelector('.catalog');
-// console.log(catalog);
+console.log(catalog)
 
+
+// let newDiv = document.createElement('div');
+// console.log (newDiv)
+// newDiv.textContent = `${goods[2].name} - ${goods[2].category} - ${goods[2].price}рублей`;
+
+// catalog.insertAdjacentHTML("beforeend",newDiv)
+
+//------ работает на одном, надо в цикл внести
+// catalog.insertAdjacentHTML("beforeend",'<div class="new-product"></div>');
+// let newProduct = document.querySelector('.new-product')
+// console.log (newProduct);
+// newProduct.textContent = `${goods[2].name} - ${goods[2].category} - ${goods[2].price}рублей`;
+//------
+
+
+
+//  работает, но не грузит добавленные товары
+// for (let i = 0; i < goods.length; i++) {
+//     catalog.insertAdjacentHTML("afterbegin", '<div class="new-product"></div>');
+//     let newProduct = document.querySelector('.new-product')
+//     console.log(newProduct);
+//     newProduct.textContent = `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`;
+// }
+
+// goods.map((value, i) => {
+//     catalog.insertAdjacentHTML("beforeend", '<div class="new-product"> `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`</div>');
+//     // let newProduct = document.querySelector('.new-product')
+//     // console.log(newProduct);
+//     // newProduct.textContent = `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`;
+// }
+// )

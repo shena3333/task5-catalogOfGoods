@@ -1,30 +1,54 @@
 .body {
     background-color: rgb(253, 253, 141);
 }
-.catalog{
+
+.catalog {
     border: solid 3px green;
     width: 800px;
 }
-.form-add-goods{
+
+.form-add-goods {
     display: none;
+
 }
-.form-add-goods-new{
-    background-color: aquamarine;
+
+.form-add-goods-new {
     display: block;
-    width: 500px;
-    height: 500px; 
+ width: 600px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 20px;
 }
-.add-new-goods{
-    display: flex;
-}
-.element-info{
+
+.element-info {
     border: solid 1px black;
     border-radius: 5px;
     width: 70px;
     height: 20px;
-    gap: 5px; 
+    gap: 5px;
 }
-.info-product{
+
+.info-product {
     display: flex;
     width: 310px;
+}
+
+.for-new-goods {
+    display: flex;
+}
+button{
+    background-color: rgb(75, 172, 252);
+    width: 190px;
+    height: 25px;
+    border-radius: 20px;
+    font-size: 17px;
+    border: none;
+    margin: 5px;
+    font-weight: 600;
+}
+.input-form{
+    width: 190px;
+    height: 25px;
+    border-radius: 20px;
+    margin-left: 10px;
 }
