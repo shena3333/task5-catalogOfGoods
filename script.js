@@ -56,6 +56,8 @@ function addGoods() {
     // присваиваю кнопке удалить id равный идентификатору в объекте товар
     buttonDelete.id = newId;
     newProduct.append(buttonDelete);
+
+    console.log (goods)
     // готовый товар с его кнопкой отоброжаем
     catalog.append(newProduct);
     // навешиваю функционал на кнопку удаления
@@ -65,14 +67,13 @@ function addGoods() {
 
 
     // Н Е    Р А Б О Т А Е Т. удаляет все элементы от номера и больше
-    for (let i = 0; i < butDelete.length; i++) {
+    for (let i = 0; i < goods.length; i++) {
         butDelete[i].addEventListener('click', deleteProduct);
         function deleteProduct() {
             let currentGoods = document.querySelectorAll('.new-prod');
-            // currentGoods[i] удалить
-            if (butDelete[i].id == goods[i].id) {
-                catalog.removeChild(currentGoods[i])
-            }
+            currentGoods[i].classList.add('display-none');//убираю отображение
+            delete goods[i];//удаляю содержимое элемента, но не элемент
+            console.log(goods)
         };
     }
 
@@ -87,5 +88,5 @@ function closeFormAdd() {
 }
 // фильтр отображения добавленных товаров
 let filterGoods = document.querySelector('.filter-goods');
-console.log(filterGoods.value)
+
 
