@@ -10,19 +10,10 @@
 
 <body class="body">
     <h1>Управление Товарным Каталогом</h1>
-    <div class="catalog">
-    </div>
-    <!-- <div class="catalog">
-        <div class="info-product">
-            <div class="id-product element-info"></div>
-            <div class="name-product element-info"></div>
-            <div class="prise-product element-info"></div>
-            <div class="category-product element-info"></div>
-        </div>
-    </div> -->
+    
     <button class='add-new-goods' onclick="addFormForNewGoods()">Добавление товара</button>
     <form class="form-add-goods" id="addProductForm">
-        <h3>Введите данные нового товара</h>
+        <h3>Введите данные нового товара</h3>
             <div class="for-new-goods">
                 <input class="input-form" id="productName" type="text" placeholder="введите наименование"
                     required></input>
@@ -37,7 +28,8 @@
             <button type="submit" class="button-add-info" onclick="addGoods()">Добавить</button>
             <button type="submit" class="close-form-add" onclick="closeFormAdd()">Закрыть</button>
     </form>
-  
+    <div class="catalog">
+    </div>
     <script src="script.js"></script>
 </body>
 

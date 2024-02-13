@@ -29,9 +29,7 @@ function addGoods() {
     } else {
         newId = Math.max(...arrayId) + 1;// так как функция макс не работает напрямую с массивами , поэтому ... ставлю
     }
-    // console.log('идент для нового товара', newId);
     newGoods.id = newId;
-    // let productName=document.getElementById('productName');
     let productName = document.getElementById('productName');
     newGoods.name = productName.value;
     let productCategory = document.getElementById('productCategory');
@@ -44,10 +42,10 @@ function addGoods() {
     // console.log(newGoods);
     goods.push(newGoods);
     console.log(goods);
-    catalog.insertAdjacentHTML("afterbegin", '<div class="new-product"></div>');
-    let newProduct = document.querySelector('.new-product')
-    console.log(newProduct);
-    newProduct.textContent = `${productName.value} - ${productCategory.value} - ${productPrice.value}рублей`;
+    let newProduct = document.createElement('div');
+    newProduct.className = 'new-prod'
+    newProduct.textContent = `${productName.value} - ${productCategory.value} - ${productPrice.value}руб.`;
+    catalog.append(newProduct)
 }
 // закрытие формы добавления товара
 function closeFormAdd() {
@@ -58,35 +56,3 @@ function closeFormAdd() {
 // достаем catalog, в котором буду отрисовывать элементы
 let catalog = document.querySelector('.catalog');
 console.log(catalog)
-
-
-// let newDiv = document.createElement('div');
-// console.log (newDiv)
-// newDiv.textContent = `${goods[2].name} - ${goods[2].category} - ${goods[2].price}рублей`;
-
-// catalog.insertAdjacentHTML("beforeend",newDiv)
-
-//------ работает на одном, надо в цикл внести
-// catalog.insertAdjacentHTML("beforeend",'<div class="new-product"></div>');
-// let newProduct = document.querySelector('.new-product')
-// console.log (newProduct);
-// newProduct.textContent = `${goods[2].name} - ${goods[2].category} - ${goods[2].price}рублей`;
-//------
-
-
-
-//  работает, но не грузит добавленные товары
-// for (let i = 0; i < goods.length; i++) {
-//     catalog.insertAdjacentHTML("afterbegin", '<div class="new-product"></div>');
-//     let newProduct = document.querySelector('.new-product')
-//     console.log(newProduct);
-//     newProduct.textContent = `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`;
-// }
-
-// goods.map((value, i) => {
-//     catalog.insertAdjacentHTML("beforeend", '<div class="new-product"> `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`</div>');
-//     // let newProduct = document.querySelector('.new-product')
-//     // console.log(newProduct);
-//     // newProduct.textContent = `${goods[i].name} - ${goods[i].category} - ${goods[i].price}рублей`;
-// }
-// )
