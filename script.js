@@ -45,7 +45,19 @@ function addGoods() {
     let newProduct = document.createElement('div');
     newProduct.className = 'new-prod'
     newProduct.textContent = `${productName.value} - ${productCategory.value} - ${productPrice.value}руб.`;
-    catalog.append(newProduct)
+   
+   // содание кнопки удаления текущего товара
+    let buttonDelete = document.createElement('button');
+    buttonDelete.className='delete-product';
+    buttonDelete.textContent='удалить';
+    newProduct.append(buttonDelete);
+    // готовый товар с его кнопкой отоброжаем
+    catalog.append(newProduct);
+    
+
+
+    
+
 }
 // закрытие формы добавления товара
 function closeFormAdd() {
@@ -55,4 +67,5 @@ function closeFormAdd() {
 }
 // достаем catalog, в котором буду отрисовывать элементы
 let catalog = document.querySelector('.catalog');
-console.log(catalog)
+console.log(catalog);
+
