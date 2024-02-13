@@ -56,29 +56,24 @@ function addGoods() {
     // присваиваю кнопке удалить id равный идентификатору в объекте товар
     buttonDelete.id = newId;
     newProduct.append(buttonDelete);
-
-    console.log (goods)
     // готовый товар с его кнопкой отоброжаем
     catalog.append(newProduct);
     // навешиваю функционал на кнопку удаления
     let butDelete = document.querySelectorAll('.delete-product');
-    // console.log(butDelete);
-
-
-
-    // Н Е    Р А Б О Т А Е Т. удаляет все элементы от номера и больше
+    // функционал кнопок удаления товара
     for (let i = 0; i < goods.length; i++) {
         butDelete[i].addEventListener('click', deleteProduct);
         function deleteProduct() {
             let currentGoods = document.querySelectorAll('.new-prod');
             currentGoods[i].classList.add('display-none');//убираю отображение
-            delete goods[i];//удаляю содержимое элемента, но не элемент
-            console.log(goods)
+            // delete goods[i];//удаляю содержимое элемента, но не элемент, но это ломает алгоритм присвоения уникал идент товару
+            delete currentGoods[i].name;
+            delete currentGoods[i].category;
+            delete currentGoods[i].price;
         };
     }
 
 }
-
 
 // закрытие формы добавления товара
 function closeFormAdd() {
@@ -88,5 +83,40 @@ function closeFormAdd() {
 }
 // фильтр отображения добавленных товаров
 let filterGoods = document.querySelector('.filter-goods');
+console.log(filterGoods.value);
+filterGoods.addEventListener('change', filterCategory);
+function filterCategory() {
+    choice = filterGoods.value;
+    let containerForGoods = document.querySelectorAll('.new-prod');
+    if (choice === 'одежда') {
+
+        for (let i = 0; i < goods.length; i++) {
+            if (goods[i].category !== 'одежда') {
+                containerForGoods[i].classList.add('display-none')
+            }
+        }
+    } else if (choice === 'электроника') {
+        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for (let i = 0; i < goods.length; i++) {
+            if (goods[i].category !== 'электроника') {
+                containerForGoods[i].classList.add('display-none')
+            }
+        }
+    } else if (choice === 'бытовая техника') {
+        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for (let i = 0; i < goods.length; i++) {
+            if (goods[i].category !== 'бытовая техника') {
+                containerForGoods[i].classList.add('display-none')
+            }
+        }
+    } else if (choice === 'игрушки') {
+        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for (let i = 0; i < goods.length; i++) {
+            if (goods[i].category !== 'игрушки') {
+                containerForGoods[i].classList.add('display-none')
+            }
+        }
+    }
+}
 
 
