@@ -61,7 +61,7 @@ function addGoods() {
         butDelete[i].addEventListener('click', deleteProduct);
         function deleteProduct() {
             let currentGoods = document.querySelectorAll('.new-prod');
-            currentGoods[i].classList.add('display-none');//убираю отображение
+            currentGoods[i].classList.add('delete');//убираю отображение
             // delete goods[i];//удаляю содержимое элемента, но не элемент, но это ломает алгоритм присвоения уникал идент товару
             delete goods[i].name;
             delete goods[i].category;
@@ -91,8 +91,9 @@ function filterCategory() {
     choice = filterGoods.value;
     let containerForGoods = document.querySelectorAll('.new-prod');
     if (choice === 'одежда') {
+      
         for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].className='new-prod'
+            containerForGoods[i].classList.remove('display-none')
         }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'одежда') {
@@ -101,7 +102,7 @@ function filterCategory() {
         }
     } else if (choice === 'электроника') {
         for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].className='new-prod'
+            containerForGoods[i].classList.remove('display-none')
         }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'электроника') {
@@ -110,7 +111,7 @@ function filterCategory() {
         }
     } else if (choice === 'бытовая техника') {
         for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].className='new-prod'
+            containerForGoods[i].classList.remove('display-none')
         }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'бытовая техника') {
@@ -119,22 +120,18 @@ function filterCategory() {
         }
     } else if (choice === 'игрушки') {
         for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].className='new-prod'
+            containerForGoods[i].classList.remove('display-none')
         }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'игрушки') {
                 containerForGoods[i].classList.add('display-none')
             }
         }
-    } 
-
-    //не работает, для фильтрации придумать другой класс для дисплей нан, чтоб не путать с удаленными и фильтровать, чтоб удаленные даже не подгружались
-    // else {
-    //     for(let i=0;i<containerForGoods.length;i++){
-    //         containerForGoods[i].className='new-prod'
-    //     }
-
-    // }
+    } else if (choice==='все'){
+        for(let i=0;i<containerForGoods.length;i++){
+            containerForGoods[i].classList.remove('display-none')
+        }
+    }
 }
 
 

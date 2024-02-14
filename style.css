@@ -67,6 +67,9 @@ button {
     margin-left: 10px;
     margin-top: 10px;
 }
+.delete{
+    display: none;
+}
 .display-none{
     display: none;
 }
