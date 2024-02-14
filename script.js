@@ -4,9 +4,6 @@ let goods = [
     // { id: 2, name: 'шарф', category: 'одежда', price: 400 },
     // { id: 3, name: 'перчатки', category: 'одежда', price: 300 },
     // { id: 4, name: 'барби', category: 'игрушки', price: 600 },
-    // { id: 5, name: 'мяч', category: 'игрушки', price: 200 },
-    // { id: 6, name: 'робот', category: 'игрушки', price: 700 },
-    // { id: 7, name: 'медведь', category: 'игрушки', price: 100 },
 ];
 
 //отображаем форму добавления товара
@@ -54,7 +51,6 @@ function addGoods() {
     buttonDelete.className = 'delete-product';
     buttonDelete.textContent = 'удалить';
     // присваиваю кнопке удалить id равный идентификатору в объекте товар
-    buttonDelete.id = newId;
     newProduct.append(buttonDelete);
     // готовый товар с его кнопкой отоброжаем
     catalog.append(newProduct);
@@ -67,11 +63,14 @@ function addGoods() {
             let currentGoods = document.querySelectorAll('.new-prod');
             currentGoods[i].classList.add('display-none');//убираю отображение
             // delete goods[i];//удаляю содержимое элемента, но не элемент, но это ломает алгоритм присвоения уникал идент товару
-            delete currentGoods[i].name;
-            delete currentGoods[i].category;
-            delete currentGoods[i].price;
+            delete goods[i].name;
+            delete goods[i].category;
+            delete goods[i].price;
+            console.log (goods)
         };
+        
     }
+    console.log (goods)
 
 }
 
@@ -85,38 +84,59 @@ function closeFormAdd() {
 let filterGoods = document.querySelector('.filter-goods');
 console.log(filterGoods.value);
 filterGoods.addEventListener('change', filterCategory);
+
+
+// работает один раз, при повторном выборе  пытается отобрать их уже из отфильтрованного списка, соответственно получается пусто.
 function filterCategory() {
     choice = filterGoods.value;
     let containerForGoods = document.querySelectorAll('.new-prod');
     if (choice === 'одежда') {
-
+        for(let i=0;i<containerForGoods.length;i++){
+            containerForGoods[i].className='new-prod'
+        }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'одежда') {
                 containerForGoods[i].classList.add('display-none')
             }
         }
     } else if (choice === 'электроника') {
-        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for(let i=0;i<containerForGoods.length;i++){
+            containerForGoods[i].className='new-prod'
+        }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'электроника') {
                 containerForGoods[i].classList.add('display-none')
             }
         }
     } else if (choice === 'бытовая техника') {
-        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for(let i=0;i<containerForGoods.length;i++){
+            containerForGoods[i].className='new-prod'
+        }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'бытовая техника') {
                 containerForGoods[i].classList.add('display-none')
             }
         }
     } else if (choice === 'игрушки') {
-        // let containerForGoods = document.querySelectorAll('.new-prod');
+        for(let i=0;i<containerForGoods.length;i++){
+            containerForGoods[i].className='new-prod'
+        }
         for (let i = 0; i < goods.length; i++) {
             if (goods[i].category !== 'игрушки') {
                 containerForGoods[i].classList.add('display-none')
             }
         }
-    }
+    } 
+
+    //не работает, для фильтрации придумать другой класс для дисплей нан, чтоб не путать с удаленными и фильтровать, чтоб удаленные даже не подгружались
+    // else {
+    //     for(let i=0;i<containerForGoods.length;i++){
+    //         containerForGoods[i].className='new-prod'
+    //     }
+
+    // }
 }
+
+
 
 
