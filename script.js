@@ -1,10 +1,5 @@
 //массив с товарами
-let goods = [
-    // { id: 1, name: 'шапка', category: 'одежда', price: 500 },
-    // { id: 2, name: 'шарф', category: 'одежда', price: 400 },
-    // { id: 3, name: 'перчатки', category: 'одежда', price: 300 },
-    // { id: 4, name: 'барби', category: 'игрушки', price: 600 },
-];
+let goods = [];
 
 //отображаем форму добавления товара
 function addFormForNewGoods() {
@@ -39,7 +34,6 @@ function addGoods() {
     newGoods.category = productCategory.value;
     let productPrice = document.getElementById('productPrice');
     newGoods.price = productPrice.value;
-    // console.log (newGoods)
     //все товары собираем в массив
     goods.push(newGoods);
     //создаю и заполняю div для нового товара
@@ -62,16 +56,13 @@ function addGoods() {
         function deleteProduct() {
             let currentGoods = document.querySelectorAll('.new-prod');
             currentGoods[i].classList.add('delete');//убираю отображение
-            // delete goods[i];//удаляю содержимое элемента, но не элемент, но это ломает алгоритм присвоения уникал идент товару
             delete goods[i].name;
             delete goods[i].category;
             delete goods[i].price;
-            console.log (goods)
+            console.log(goods)
         };
-        
     }
-    console.log (goods)
-
+    console.log(goods)
 }
 
 // закрытие формы добавления товара
@@ -85,55 +76,30 @@ let filterGoods = document.querySelector('.filter-goods');
 console.log(filterGoods.value);
 filterGoods.addEventListener('change', filterCategory);
 
-
-// работает один раз, при повторном выборе  пытается отобрать их уже из отфильтрованного списка, соответственно получается пусто.
-function filterCategory() {
+function filter(categoryProd) {
     choice = filterGoods.value;
     let containerForGoods = document.querySelectorAll('.new-prod');
-    if (choice === 'одежда') {
-      
-        for(let i=0;i<containerForGoods.length;i++){
+    if (choice === categoryProd) {
+        for (let i = 0; i < containerForGoods.length; i++) {
             containerForGoods[i].classList.remove('display-none')
         }
         for (let i = 0; i < goods.length; i++) {
-            if (goods[i].category !== 'одежда') {
+            if (goods[i].category !== categoryProd) {
                 containerForGoods[i].classList.add('display-none')
             }
         }
-    } else if (choice === 'электроника') {
-        for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].classList.remove('display-none')
-        }
-        for (let i = 0; i < goods.length; i++) {
-            if (goods[i].category !== 'электроника') {
-                containerForGoods[i].classList.add('display-none')
-            }
-        }
-    } else if (choice === 'бытовая техника') {
-        for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].classList.remove('display-none')
-        }
-        for (let i = 0; i < goods.length; i++) {
-            if (goods[i].category !== 'бытовая техника') {
-                containerForGoods[i].classList.add('display-none')
-            }
-        }
-    } else if (choice === 'игрушки') {
-        for(let i=0;i<containerForGoods.length;i++){
-            containerForGoods[i].classList.remove('display-none')
-        }
-        for (let i = 0; i < goods.length; i++) {
-            if (goods[i].category !== 'игрушки') {
-                containerForGoods[i].classList.add('display-none')
-            }
-        }
-    } else if (choice==='все'){
-        for(let i=0;i<containerForGoods.length;i++){
+    }
+};
+
+function filterCategory() {
+    let containerForGoods = document.querySelectorAll('.new-prod');
+    filter('одежда');
+    filter('электроника');
+    filter('бытовая техника');
+    filter('игрушки');
+    if (filterGoods.value === 'все') {
+        for (let i = 0; i < containerForGoods.length; i++) {
             containerForGoods[i].classList.remove('display-none')
         }
     }
 }
-
-
-
-
