@@ -1,6 +1,5 @@
 //массив с товарами
 let goods = [];
-
 //отображаем форму добавления товара
 function addFormForNewGoods() {
     let formAddGoods = document.querySelector('.form-add-goods');
@@ -9,7 +8,6 @@ function addFormForNewGoods() {
 };
 // достаем catalog, в котором буду отрисовывать элементы
 let catalog = document.querySelector('.catalog');
-
 // создаю новый товар 
 function addGoods() {
     event.preventDefault();// обнули стандартные свойства формы, чтоб не происходило переотрисовка дом-дерево
@@ -24,7 +22,7 @@ function addGoods() {
     if (arrayId.length == 0) {
         newId = 1
     } else {
-        newId = Math.max(...arrayId) + 1;// так как функция макс не работает напрямую с массивами , поэтому ... ставлю
+        newId = Math.max(...arrayId) + 1;// так как функция макс не работает напрямую с массивами , поэтому spread ... ставлю
     }
     //собираю все свойства объекта товара
     newGoods.id = newId;
@@ -44,27 +42,38 @@ function addGoods() {
     let buttonDelete = document.createElement('button');
     buttonDelete.className = 'delete-product';
     buttonDelete.textContent = 'удалить';
-    // присваиваю кнопке удалить id равный идентификатору в объекте товар
+    // =======вариант 2 удаления товара============
+    buttonDelete.onclick = () => {
+        let needContainer = buttonDelete.closest('.new-prod');
+        console.log(needContainer);
+        needContainer.remove();
+    }
+    // ======= конец вариант 2 удаления товара============
+
     newProduct.append(buttonDelete);
     // готовый товар с его кнопкой отоброжаем
     catalog.append(newProduct);
     // навешиваю функционал на кнопку удаления
-    let butDelete = document.querySelectorAll('.delete-product');
+
+    // ----------ВАРИАНТ 1----------
+    // блок кода по удалению наименования, цены и категории из объеката товара, 
+    // убирается отображение, но отображене не удаляется и сохраняется объект с идентификатором товара
     // функционал кнопок удаления товара
-    for (let i = 0; i < goods.length; i++) {
-        butDelete[i].addEventListener('click', deleteProduct);
-        function deleteProduct() {
-            let currentGoods = document.querySelectorAll('.new-prod');
-            currentGoods[i].classList.add('delete');//убираю отображение
-            delete goods[i].name;
-            delete goods[i].category;
-            delete goods[i].price;
-            console.log(goods)
-        };
-    }
+    // let butDelete = document.querySelectorAll('.delete-product');
+    // for (let i = 0; i < goods.length; i++) {
+    //     butDelete[i].addEventListener('click', deleteProduct);
+    //     function deleteProduct() {
+    //         let currentGoods = document.querySelectorAll('.new-prod');
+    //         currentGoods[i].classList.add('delete');//убираю отображение
+    //         delete goods[i].name;
+    //         delete goods[i].category;
+    //         delete goods[i].price;
+    //         console.log(goods);
+    //     };
+    // }
+    // -------- КОНЕЦ ВАРИАНТА 1-----------------
     console.log(goods)
 }
-
 // закрытие формы добавления товара
 function closeFormAdd() {
     event.preventDefault();// обнули стандартные свойства формы, чтоб не происходило переотрисовка дом-дерево
@@ -103,3 +112,4 @@ function filterCategory() {
         }
     }
 }
+

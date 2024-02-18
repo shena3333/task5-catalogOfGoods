@@ -37,6 +37,9 @@
 
 .new-prod {
     margin: 5px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .for-new-goods {
@@ -58,7 +61,7 @@ button {
     width: 190px;
     height: 25px;
     border-radius: 20px;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 .filter-goods{
     width: 190px;
