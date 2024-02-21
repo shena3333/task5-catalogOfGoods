@@ -1,12 +1,8 @@
-//массив с товарами
 let goods = [];
-//отображаем форму добавления товара
 function addFormForNewGoods() {
     let formAddGoods = document.querySelector('.form-add-goods');
     formAddGoods.className = 'form-add-goods-new';
-    // console.log(formAddGoods);
 };
-// достаем catalog, в котором буду отрисовывать элементы
 let catalog = document.querySelector('.catalog');
 // создаю новый товар 
 function addGoods() {
@@ -43,13 +39,17 @@ function addGoods() {
     buttonDelete.className = 'delete-product';
     buttonDelete.textContent = 'удалить';
     // =======вариант 2 удаления товара============
+    newProduct.id = newId;
     buttonDelete.onclick = () => {
         let needContainer = buttonDelete.closest('.new-prod');
-        console.log(needContainer);
+        let deleteIdGoods = needContainer.id;
+        let deleteGoods = goods.filter(function (elem) {
+            return elem.id == deleteIdGoods
+        });
+        goods.splice(goods.indexOf(deleteGoods[0]), 1)
         needContainer.remove();
     }
     // ======= конец вариант 2 удаления товара============
-
     newProduct.append(buttonDelete);
     // готовый товар с его кнопкой отоброжаем
     catalog.append(newProduct);
@@ -60,6 +60,7 @@ function addGoods() {
     // убирается отображение, но отображене не удаляется и сохраняется объект с идентификатором товара
     // функционал кнопок удаления товара
     // let butDelete = document.querySelectorAll('.delete-product');
+    // newProduct.id = newId;
     // for (let i = 0; i < goods.length; i++) {
     //     butDelete[i].addEventListener('click', deleteProduct);
     //     function deleteProduct() {
