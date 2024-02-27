@@ -10,32 +10,24 @@
 
 <body class="body">
     <h1>Управление Товарным Каталогом</h1>
-
-    <button class='add-new-goods' onclick="addFormForNewGoods()">Добавление товара</button>
-    <form class="form-add-goods" id="addProductForm">
-        <h3>Введите данные нового товара</h3>
-        <div class="for-new-goods">
-            <input class="input-form" id="productName" type="text" required placeholder="введите наименование"></input>
-            <select class="input-form" id="productCategory">
-                <option value="электроника">Электроника</option>
-                <option value="одежда">Одежда</option>
-                <option value="бытовая техника">Бытовая техника</option>
-                <option value="игрушки">Игрушки</option>
-            </select>
-            <input class="input-form" id="productPrice" type="number" placeholder="введите цену" required></input>
-        </div>
-        <button type="submit" class="button-add-info" onclick="addGoods()">Добавить</button>
-        <button type="submit" class="close-form-add" onclick="closeFormAdd()">Закрыть</button>
-    </form>
-    <div>
-        <select class="filter-goods">
-            <option value="все">Все категории</option>
+    <form id="addProductForm">
+        <input class='user-info' type="text" id="productName" placeholder="Название товара" required>
+        <select class='user-info' id="productCategory">
             <option value="электроника">Электроника</option>
             <option value="одежда">Одежда</option>
             <option value="бытовая техника">Бытовая техника</option>
             <option value="игрушки">Игрушки</option>
         </select>
-    </div>
+        <input class='user-info' type="number" id="productPrice" placeholder="Цена" required>
+        <button class='user-info' id='btnAddGoods' type="submit">Добавить товар</button>
+    </form>
+    <select class='user-info' id="categoryFilter">
+        <option value="все">Все</option>
+        <option value="электроника">Электроника</option>
+        <option value="одежда">Одежда</option>
+        <option value="бытовая техника">Бытовая техника</option>
+        <option value="игрушки">Игрушки</option>
+    </select>
     <div class="catalog">
     </div>
     <script src="script.js"></script>

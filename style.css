@@ -1,78 +1,15 @@
 .body {
-    background-color: rgb(253, 253, 141);
+    background-color: rgb(235, 235, 235);
 }
-
-.catalog {
-    border: solid 1px black;
-    width: 800px;
-    margin-top: 50px;
-    border-radius: 20px;
-}
-
-.form-add-goods {
-    display: none;
-}
-
-.form-add-goods-new {
-    display: block;
-    width: 600px;
-    height: 150px;
-    padding: 10px;
-    border: solid 1px black;
-    border-radius: 20px;
-}
-
-.element-info {
-    border: solid 1px black;
-    border-radius: 5px;
-    width: 70px;
-    height: 20px;
-    gap: 5px;
-}
-
-.info-product {
-    display: flex;
-    width: 310px;
-}
-
-.new-prod {
-    margin: 5px;
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.for-new-goods {
-    display: flex;
-}
-
-button {
-    background-color: rgb(75, 172, 252);
-    width: 190px;
-    height: 25px;
+#addProductForm{
+    background-color: white;
     border-radius: 10px;
-    font-size: 17px;
-    border: none;
-    margin: 5px;
-    font-weight: 600;
+    width: 680px;
 }
-
-.input-form {
-    width: 190px;
-    height: 25px;
-    border-radius: 20px;
-    margin-left: 5px;
-}
-.filter-goods{
-    width: 190px;
-    height: 25px;
-    border-radius: 20px;
-    margin-left: 10px;
-    margin-top: 10px;
-}
-.delete{
-    display: none;
-}
-.display-none{
-    display: none;
+.user-info, button{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px grey;
+    margin: 10px;
 }
